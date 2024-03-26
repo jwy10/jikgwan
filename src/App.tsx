@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
+import IntroHeader from './components/IntroHeader';
 
 function App() {
   return (
     <div className="App">
-      <h1>직관</h1>
+      <h1>JikGwan</h1>
+      <IntroHeader />
     </div>
   );
 }
