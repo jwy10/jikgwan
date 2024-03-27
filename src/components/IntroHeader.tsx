@@ -1,9 +1,16 @@
 import React from 'react'
+import '../CSS/Intro.css'
 
-export default function IntroHeader() {
+interface Props {
+  name: string
+  // bgimage: string
+}
+
+
+export default function IntroHeader({name}: Props) {
   return (
-    <div>
-      <h3>국내 직관</h3>
-    </div>
+    <span className='introBox'>
+      {name} 직관
+    </span>
   )
 }
