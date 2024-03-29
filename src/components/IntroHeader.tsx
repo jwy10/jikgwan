@@ -1,39 +1,51 @@
-import React from 'react'
-import '../CSS/Intro.css'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface Props {
-  name: string
-  imgUrl: string
-  fontColor: string
-  expandSize: string
+  name: string;
+  imgUrl: string;
+  fontColor: string;
+  expandSize: string;
+  link: string;
 }
 
+export default function IntroHeader({
+  name,
+  imgUrl,
+  fontColor,
+  expandSize,
+  link,
+}: Props) {
+  const IntroBtn = styled.div`
+    display: flex;
+    background-image: url('${imgUrl}');
+    width: 45%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 10px;
+    color: ${fontColor};
+    font-size: 28px;
+    font-weight: bold;
 
-export default function IntroHeader({name, imgUrl, fontColor, expandSize}: Props) {
-  const MyDiv = styled.div`
-  display: flex;
-  background-image: url('${imgUrl}');
-  width: 45%;
-  height: 500px;
-  background-size: cover;
-  background-position: center;
-  align-items : center;
-  text-align: center;
-  justify-content: center;
-  margin: 10px;
-  color: ${fontColor};
-  font-size: 28px;
-  font-weight: bold;
-  transition: background-size 1s ease;
+    &:hover {
+      background-size: ${expandSize};
+      transition: transform 0.5s ease;
+    }
 
-  &:hover{
-    background-size: ${expandSize} ;
-  }
-  `
+    @media screen and (max-width: 768px) {
+      width: 90%;
+    }
+  `;
   return (
     <>
-    <MyDiv>{name}직관</MyDiv>
+      <IntroBtn className="IntroBtn">
+        <Link to={link}>{name}직관</Link>
+      </IntroBtn>
     </>
-  )
+  );
 }

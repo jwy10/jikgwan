@@ -1,20 +1,27 @@
 import React from 'react';
 import './CSS/App.css';
 // import './CSS/Reset.css'
-import IntroHeader from './components/IntroHeader';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Intro from './pages/Intro';
+import Domestic from './pages/Domestic';
+import Overseas from './pages/Overseas';
+import NotFounded from './pages/NotFounded';
 
 function App() {
-  const imgDome = '/domestic.png'
-  const imgOver = '/overseas.png'
+
   return (
     <div className="App">
-      <div><h1>JikGwan</h1></div>
-      <div className='Intro'>
-        <IntroHeader name="국내" imgUrl={imgDome} fontColor='white' expandSize='200%'/>
-        <IntroHeader name="해외"  imgUrl={imgOver} fontColor='black' expandSize='300%'/>
+      <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Intro />} />
+    <Route path='/domestic' element={<Domestic/>}/>
+    <Route path='/overseas' element={<Overseas/>}/>
+    <Route path='/404' element={<NotFounded />}/>
+    </Routes>
+      </BrowserRouter>
+
       </div>
-      
-    </div>
+
   );
 }
 
