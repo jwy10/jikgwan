@@ -7,7 +7,7 @@ export default function Intro() {
   return (
     <>
       <div>
-        <h1>JikGwan</h1>
+        <p style={{ fontSize: '40px', margin: '40px' }}>JikGwan</p>
       </div>
       <div className="Intro">
         <IntroHeader

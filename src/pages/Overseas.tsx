@@ -1,10 +1,15 @@
-import React from 'react'
-import Header from '../components/Header'
+import React from 'react';
+import Header from '../components/Header';
+import MainSection from '../components/MainSection';
 
 export default function Overseas() {
   return (
     <div>
-      <Header domColor='#b1b1b1' overColor='#000000'/>
+      <Header domColor="#b1b1b1" overColor="#000000" />
+      <MainSection field="프리미어리그" />
+      <MainSection field="해외축구" />
+      <MainSection field="MLB" />
+      <MainSection field="NBA" />
     </div>
-  )
+  );
 }
