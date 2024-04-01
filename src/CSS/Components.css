@@ -3,3 +3,28 @@
   border-style: solid;
   border-width: 1px;
 }
+
+.matchBox {
+  display: flex;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: 1px;
+  margin: 1px;
+}
+
+.fieldBoxHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.teamBox {
+  margin: 5px;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+  align-items: center;
+}

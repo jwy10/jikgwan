@@ -7,7 +7,9 @@ export default function Intro() {
   return (
     <>
       <div>
-        <p style={{ fontSize: '40px', margin: '40px' }}>JikGwan</p>
+        <p style={{ fontSize: '40px', margin: '40px', textAlign: 'center' }}>
+          JikGwan
+        </p>
       </div>
       <div className="Intro">
         <IntroHeader
