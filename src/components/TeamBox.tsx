@@ -1,14 +1,23 @@
+// TeamBox.tsx
+
 import React from 'react';
 import '../CSS/Components.css';
 
 interface Props {
   teamName: string;
+  isSelected: boolean;
+  onClick: () => void;
 }
 
-export default function TeamBox({ teamName }: Props) {
+const TeamBox: React.FC<Props> = ({ teamName, isSelected, onClick }) => {
   return (
-    <>
-      <div className="teamBox">{teamName}</div>
-    </>
+    <div
+      className={`teamBox ${isSelected ? 'selected' : ''}`}
+      onClick={onClick}
+    >
+      {teamName}
+    </div>
   );
-}
+};
+
+export default TeamBox;

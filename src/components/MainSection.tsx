@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../CSS/Components.css';
 import TeamBox from './TeamBox';
+import DateSearch from './DateSearch';
 
 interface Props {
   field: string;
@@ -8,19 +9,29 @@ interface Props {
 }
 
 export default function MainSection({ field, teamNames }: Props) {
-  const [showMatchBox, setShowMatchBox] = useState(true);
-  const [showSearchBox, setShowSearchBox] = useState(false);
-
+  const [showMatchBox, setShowMatchBox] = useState(false);
+  const [showSearchBox, setShowSearchBox] = useState(true);
+  const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
   const toggleMatchBox = () => {
     setShowMatchBox(!showMatchBox);
     setShowSearchBox(!showSearchBox);
   };
 
+  const toggleSelection = (teamName: string) => {
+    if (selectedTeams.includes(teamName)) {
+      setSelectedTeams(selectedTeams.filter((name) => name !== teamName));
+    } else {
+      setSelectedTeams([...selectedTeams, teamName]);
+    }
+  };
+
+  const currentDate = new Date().toISOString().split('T')[0];
+
   return (
     <>
       <div className="fieldBox">
         <div className="fieldBoxHeader">
-          <h2 style={{ margin: '5px', fontSize: '32px' }}> {field} </h2>
+          <h2 style={{ margin: '5px', fontSize: '28px' }}> {field} </h2>
           <button onClick={toggleMatchBox} className="toggleBtn">
             {showMatchBox ? '▲' : '▼'}
           </button>
@@ -49,6 +60,14 @@ export default function MainSection({ field, teamNames }: Props) {
                 }}
               />
             </div>
+            <DateSearch />
+            <button type="button" className="searchBtn">
+              <img
+                src="/search.png"
+                alt=""
+                style={{ width: '30px', height: '30px' }}
+              />
+            </button>
           </div>
         )}
 
@@ -56,7 +75,12 @@ export default function MainSection({ field, teamNames }: Props) {
           <>
             <div className="teamList">
               {teamNames.map((teamName, index) => (
-                <TeamBox key={index} teamName={teamName} />
+                <TeamBox
+                  key={index}
+                  teamName={teamName}
+                  isSelected={selectedTeams.includes(teamName)}
+                  onClick={() => toggleSelection(teamName)}
+                />
               ))}
             </div>
             <div className="matchBox">

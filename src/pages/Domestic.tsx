@@ -15,6 +15,8 @@ export default function Domestic() {
     '제주',
     '강원',
     '김천',
+    '대구',
+    '대전',
   ];
   return (
     <div>

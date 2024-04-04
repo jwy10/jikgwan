@@ -30,27 +30,33 @@
 }
 
 .teamBox {
-  margin: 5px;
+  margin: 15px;
   display: flex;
-  width: 80px;
-  height: 80px;
+  flex: 0 0 100px;
+  height: 100px;
   border-width: 1px;
   border-style: solid;
   text-align: center;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
+.teamBox.selected {
+  background-color: #007bff; /* 선택된 팀의 배경색 */
+  color: white; /* 선택된 팀의 글자색 */
+}
 .teamList {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  overflow-x: auto;
 }
 
 .matchSearch {
   display: flex;
   flex-direction: row;
-  margin: 10px;
+  margin: 15px;
+  justify-content: start;
 }
 
 .soccerIcon {
@@ -63,8 +69,38 @@
   flex-direction: row;
   border-style: solid;
   border-width: 1px;
-  /* text-align: center;/ */
   align-items: center;
+  margin-right: 10px;
+}
+
+.dateIcon {
+  width: 25px;
+  height: 25px;
+}
+
+.dateSearch {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  align-items: center;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.searchBtn {
+  width: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+.searchBtn:active {
+  background-color: gray;
 }
 
 input {
