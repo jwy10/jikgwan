@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import '../CSS/Components.css';
 import TeamBox from './TeamBox';
 import DateSearch from './DateSearch';
-import { data } from 'cheerio/lib/api/attributes';
 
 interface Props {
   field: string;
@@ -45,7 +44,7 @@ export default function MainSection({ field, teamNames }: Props) {
 
       // Cheerio를 사용하여 데이터를 파싱하고 배열에 저장
       const parsedResults: string[] = [];
-      $('.EventItem__Title').each((index: number, element: Element) => {
+      $('Ene').each((index: Number, element: Element) => {
         parsedResults.push($(element).text());
       });
 
@@ -112,13 +111,21 @@ export default function MainSection({ field, teamNames }: Props) {
                 />
               ))}
             </div>
-            {parsedData.map((item, index) => (
-              <div className="matchBox" key={index}>
-                <p>날짜</p>
-                <p>{item}</p> {/* parsedData를 표시 */}
-                <p>구매</p>
-              </div>
-            ))}
+            <div className="matchBox">
+              <p>날짜</p>
+              <p>해당 경기</p>
+              <p>구매</p>
+            </div>
+            <div className="matchBox">
+              <p>날짜</p>
+              <p>해당 경기</p>
+              <p>구매</p>
+            </div>
+            <div className="matchBox">
+              <p>날짜</p>
+              <p>해당 경기</p>
+              <p>구매</p>
+            </div>
           </>
         )}
       </div>
