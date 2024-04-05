@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../CSS/Components.css';
 import TeamBox from './TeamBox';
 import DateSearch from './DateSearch';
+import { data } from 'cheerio/lib/api/attributes';
 
 interface Props {
   field: string;
   teamNames: string[];
 }
+
+const axios = require('axios');
+const cheerio = require('cheerio');
 
 export default function MainSection({ field, teamNames }: Props) {
   const [showMatchBox, setShowMatchBox] = useState(false);
@@ -25,7 +29,32 @@ export default function MainSection({ field, teamNames }: Props) {
     }
   };
 
-  const currentDate = new Date().toISOString().split('T')[0];
+  const [parsedData, setParsedData] = useState<string[]>([]);
+
+  useEffect(() => {
+    fetchDataAndParse();
+  }, []);
+
+  const fetchDataAndParse = async () => {
+    try {
+      const response = await axios.get(
+        'https://www.stubhub.ie/premier-league-tickets/grouping/154987/'
+      );
+      const html = response.data;
+      const $ = cheerio.load(html);
+
+      // Cheerio를 사용하여 데이터를 파싱하고 배열에 저장
+      const parsedResults: string[] = [];
+      $('.EventItem__Title').each((index: number, element: Element) => {
+        parsedResults.push($(element).text());
+      });
+
+      // 파싱된 데이터를 React 상태에 저장
+      setParsedData(parsedResults);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
 
   return (
     <>
@@ -83,21 +112,13 @@ export default function MainSection({ field, teamNames }: Props) {
                 />
               ))}
             </div>
-            <div className="matchBox">
-              <p>날짜</p>
-              <p>해당 경기</p>
-              <p>구매</p>
-            </div>
-            <div className="matchBox">
-              <p>날짜</p>
-              <p>해당 경기</p>
-              <p>구매</p>
-            </div>
-            <div className="matchBox">
-              <p>날짜</p>
-              <p>해당 경기</p>
-              <p>구매</p>
-            </div>
+            {parsedData.map((item, index) => (
+              <div className="matchBox" key={index}>
+                <p>날짜</p>
+                <p>{item}</p> {/* parsedData를 표시 */}
+                <p>구매</p>
+              </div>
+            ))}
           </>
         )}
       </div>

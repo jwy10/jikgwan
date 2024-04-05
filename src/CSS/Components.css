@@ -16,7 +16,7 @@
 
 .matchBox {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   border-style: solid;
   border-width: 1px;
   margin: 1px;
