@@ -2,13 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../CSS/Components.css';
 import TeamBox from './TeamBox';
 import DateSearch from './DateSearch';
+import axios from 'axios';
 
 interface Props {
   field: string;
   teamNames: string[];
 }
-
-const axios = require('axios');
 const cheerio = require('cheerio');
 
 export default function MainSection({ field, teamNames }: Props) {
@@ -27,33 +26,34 @@ export default function MainSection({ field, teamNames }: Props) {
       setSelectedTeams([...selectedTeams, teamName]);
     }
   };
-
-  const [parsedData, setParsedData] = useState<string[]>([]);
-
-  useEffect(() => {
-    fetchDataAndParse();
-  }, []);
-
-  const fetchDataAndParse = async () => {
+  const getHTML = async (keyword: string) => {
     try {
-      const response = await axios.get(
+      return await axios.get(
         'https://www.stubhub.ie/premier-league-tickets/grouping/154987/'
       );
-      const html = response.data;
-      const $ = cheerio.load(html);
-
-      // Cheerio를 사용하여 데이터를 파싱하고 배열에 저장
-      const parsedResults: string[] = [];
-      $('Ene').each((index: Number, element: Element) => {
-        parsedResults.push($(element).text());
-      });
-
-      // 파싱된 데이터를 React 상태에 저장
-      setParsedData(parsedResults);
-    } catch (error) {
-      console.error('Error fetching data:', error);
+    } catch (err) {
+      console.log(err);
     }
   };
+
+  const parsing = async (keyword: string) => {
+    const html = await getHTML(keyword);
+    console.log(html);
+    // const $ = cheerio.load(html?.data as string);
+    // const $matchList = $('.Panel Panel-Border EventItem');
+    // let matchInfo: { date: string; title: string; link: string }[] = [];
+    // $matchList.each((idx: number, node: cheerio.Element) => {
+    //   const title = $(node).find('.EventItem__Title > a > div').text();
+    //   matchInfo.push({
+    //     date: $(node).find('.EventItem__Title > a > div').text(),
+    //     title: $(node).find('.DateStamp__MonthDateYear > span').text(),
+    //     link: $(node).find('.EventItem__Title > a').attr('href') || '', // href가 없을 경우 빈 문자열 반환
+    //   });
+    // });
+    // console.log(matchInfo);
+  };
+
+  parsing('Liverpool FC');
 
   return (
     <>
