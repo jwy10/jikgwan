@@ -1,0 +1,76 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.Intro {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 부모 요소로부터 상속된 색상 사용 */
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 25px 16%;
+}
+
+.headerMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-around;
+  margin-top: 16px;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userConnect {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.mypageSec {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 1px;
+  margin-top: 3px;
+  padding: 2px;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .Intro {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input[type='checkbox'] {
+  vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
