@@ -1,0 +1,63 @@
+.App {
+  display: flex;
+  /* align-items: center; */
+}
+
+.Login {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox {
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 100px;
+}
+
+.loginInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 60px;
+}
+
+.noneSignUp {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.loginEmail {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 5px;
+}
+
+.loginPassword {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 5px;
+}
+
+.loginInput {
+  margin-left: 5px;
+  width: 300px;
+  height: 45px;
+  border: none;
+}
+
+.emailBtn {
+  background-color: white;
+  border: none;
+}
+
+.passwordBtn {
+  background-color: white;
+  border: none;
+}

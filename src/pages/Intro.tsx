@@ -1,9 +1,10 @@
 import React from 'react';
 import IntroHeader from '../components/IntroHeader';
-import { Link } from 'react-router-dom';
+
 export default function Intro() {
   const imgDome = '/domestic.png';
   const imgOver = '/overseas.png';
+
   return (
     <>
       <div>
