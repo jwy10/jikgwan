@@ -45,7 +45,7 @@ export default function Login(): JSX.Element {
               <input
                 className="loginInput"
                 type="email"
-                placeholder="email"
+                placeholder="이메일"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ marginLeft: '10px' }}
@@ -58,7 +58,7 @@ export default function Login(): JSX.Element {
               <input
                 className="loginInput"
                 type={showPassword ? 'text' : 'password'}
-                placeholder="password"
+                placeholder="비밀번호"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 style={{ marginLeft: '10px' }}

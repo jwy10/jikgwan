@@ -49,7 +49,7 @@ export default function FindPassword(): JSX.Element {
               <input
                 className="findInput"
                 type="email"
-                placeholder="email"
+                placeholder="이메일"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ marginLeft: '10px' }}
