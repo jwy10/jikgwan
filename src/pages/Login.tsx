@@ -7,8 +7,7 @@ export default function Login(): JSX.Element {
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [clicked, setClicked] = useState<boolean>(false); // 클릭 상태를 추적하는 상태 추가
-
+  const [clicked, setClicked] = useState<boolean>(false);
   const togglePasswordVisibility = (): void => {
     setShowPassword(!showPassword);
   };
@@ -21,7 +20,7 @@ export default function Login(): JSX.Element {
   };
 
   const handleClick = (): void => {
-    setClicked(true); // 클릭되었음을 표시
+    setClicked(true);
   };
 
   return (
