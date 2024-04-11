@@ -4,17 +4,18 @@ import MainSection from '../components/MainSection';
 
 export default function Overseas() {
   const pl = [
-    '토트넘',
-    '맨유',
-    '첼시',
-    '리버풀',
-    '아스날',
-    '맨시티',
-    '울버햄튼',
-    '아스톤빌라',
-    '웨스트햄',
-    '브라이튼',
+    { appearData: '맨유', sendData: 'Manchester United' },
+    { appearData: '토트넘', sendData: 'Tottenham' },
+    { appearData: '첼시', sendData: 'Chelsea' },
+    { appearData: '리버풀', sendData: 'Liverpool' },
+    { appearData: '아스날', sendData: 'Arsenal' },
+    { appearData: '맨시티', sendData: 'Manchester City' },
+    { appearData: '울버햄튼', sendData: 'Wolverhampton' },
+    { appearData: '아스톤빌라', sendData: 'Aston Villa' },
+    { appearData: '웨스트햄', sendData: 'West Ham United' },
+    { appearData: '브라이튼', sendData: 'Brighton & Hove Albion' },
   ];
+
   return (
     <div>
       <Header domColor="#b1b1b1" overColor="#000000" />

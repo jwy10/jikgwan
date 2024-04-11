@@ -6,54 +6,51 @@ import axios from 'axios';
 
 interface Props {
   field: string;
-  teamNames: string[];
+  teamNames: { appearData: string; sendData: string }[];
 }
-const cheerio = require('cheerio');
+
+interface Match {
+  month: string;
+  day: string;
+  title: string;
+  link: string;
+}
 
 export default function MainSection({ field, teamNames }: Props) {
   const [showMatchBox, setShowMatchBox] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(true);
-  const [selectedTeams, setSelectedTeams] = useState<string[]>([]);
+  const [selectedTeam, setSelectedTeam] = useState<string>('');
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState<number>(-1); // Add state to keep track of selected team index
+
   const toggleMatchBox = () => {
     setShowMatchBox(!showMatchBox);
     setShowSearchBox(!showSearchBox);
   };
 
-  const toggleSelection = (teamName: string) => {
-    if (selectedTeams.includes(teamName)) {
-      setSelectedTeams(selectedTeams.filter((name) => name !== teamName));
-    } else {
-      setSelectedTeams([...selectedTeams, teamName]);
-    }
-  };
-  const getHTML = async (keyword: string) => {
-    try {
-      return await axios.get(
-        'https://www.stubhub.ie/premier-league-tickets/grouping/154987/'
-      );
-    } catch (err) {
-      console.log(err);
-    }
+  const toggleSelection = (teamName: string, index: number) => {
+    // Modify toggleSelection to receive the index
+    setSelectedTeam(teamName);
+    setSelectedTeamIndex(index); // Update selected team index
   };
 
-  const parsing = async (keyword: string) => {
-    const html = await getHTML(keyword);
-    console.log(html);
-    // const $ = cheerio.load(html?.data as string);
-    // const $matchList = $('.Panel Panel-Border EventItem');
-    // let matchInfo: { date: string; title: string; link: string }[] = [];
-    // $matchList.each((idx: number, node: cheerio.Element) => {
-    //   const title = $(node).find('.EventItem__Title > a > div').text();
-    //   matchInfo.push({
-    //     date: $(node).find('.EventItem__Title > a > div').text(),
-    //     title: $(node).find('.DateStamp__MonthDateYear > span').text(),
-    //     link: $(node).find('.EventItem__Title > a').attr('href') || '', // href가 없을 경우 빈 문자열 반환
-    //   });
-    // });
-    // console.log(matchInfo);
-  };
+  const [matches, setMatches] = useState<Match[]>([]);
 
-  parsing('Liverpool FC');
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.post('http://localhost:8000/matches', {
+          teamName: selectedTeam,
+        });
+        setMatches(response.data);
+      } catch (error) {
+        console.error('데이터를 불러오는 중 에러 발생:', error);
+      }
+    };
+
+    if (selectedTeam) {
+      fetchData();
+    }
+  }, [selectedTeam]);
 
   return (
     <>
@@ -102,30 +99,27 @@ export default function MainSection({ field, teamNames }: Props) {
         {showMatchBox && (
           <>
             <div className="teamList">
-              {teamNames.map((teamName, index) => (
+              {teamNames.map((team, index) => (
                 <TeamBox
                   key={index}
-                  teamName={teamName}
-                  isSelected={selectedTeams.includes(teamName)}
-                  onClick={() => toggleSelection(teamName)}
+                  teamName={team.appearData}
+                  isSelected={selectedTeamIndex === index} // Check if the index matches selectedTeamIndex
+                  onClick={() => toggleSelection(team.sendData, index)} // Pass the index to toggleSelection
                 />
               ))}
             </div>
-            <div className="matchBox">
-              <p>날짜</p>
-              <p>해당 경기</p>
-              <p>구매</p>
-            </div>
-            <div className="matchBox">
-              <p>날짜</p>
-              <p>해당 경기</p>
-              <p>구매</p>
-            </div>
-            <div className="matchBox">
-              <p>날짜</p>
-              <p>해당 경기</p>
-              <p>구매</p>
-            </div>
+
+            {matches.map((match, index) => (
+              <div className="matchBox" key={index}>
+                <p>
+                  {match.month} {match.day}
+                </p>
+                <p>{match.title}</p>
+                <p>
+                  <a href={match.link}>구매</a>
+                </p>
+              </div>
+            ))}
           </>
         )}
       </div>
