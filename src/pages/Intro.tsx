@@ -26,7 +26,7 @@ export default function Intro() {
         <IntroHeader
           name="해외"
           imgUrl={imgOver}
-          fontColor="black"
+          fontColor="#03008d"
           expandSize="250%"
           link="/overseas"
         />

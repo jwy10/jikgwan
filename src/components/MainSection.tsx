@@ -54,6 +54,12 @@ export default function MainSection({ field, teamNames }: Props) {
     }
   }, [selectedTeam]);
 
+  const [clickedMatchIndex, setClickedMatchIndex] = useState<number>(-1);
+
+  const handleLinkButtonClick = (index: number) => {
+    setClickedMatchIndex(index === clickedMatchIndex ? -1 : index);
+  };
+
   return (
     <>
       <div className="fieldBox">
@@ -119,7 +125,7 @@ export default function MainSection({ field, teamNames }: Props) {
                   </p>
                 </div>
                 <div className="matchInfo">
-                  <p style={{ marginLeft: '25px' }}>{match.time}</p>
+                  <p style={{ marginLeft: '18px' }}>{match.time}</p>
                   <p
                     style={{
                       display: 'flex',
@@ -138,7 +144,7 @@ export default function MainSection({ field, teamNames }: Props) {
                       H
                     </p>
                     {match.title.split(' v ')[0] && (
-                      <p style={{ marginRight: '10px' }}>
+                      <p style={{ marginRight: '10px', fontSize: '16px' }}>
                         {convertEnglishToKorean(
                           match.title.split(' v ')[0].trim()
                         )}
@@ -146,18 +152,22 @@ export default function MainSection({ field, teamNames }: Props) {
                     )}
                     vs
                     {match.title.split(' v ')[1] && (
-                      <p style={{ marginLeft: '10px' }}>
+                      <p style={{ marginLeft: '10px', fontSize: '16px' }}>
                         {convertEnglishToKorean(
                           match.title.split(' v ')[1].trim()
                         )}
                       </p>
                     )}
                   </p>
-                  <button className="linkBtn">
-                    <a href={match.link} style={{ margin: '10px 5px' }}>
-                      구매
-                    </a>
-                  </button>
+                  <a
+                    className={`linkBtn ${
+                      clickedMatchIndex === index ? 'clicked' : ''
+                    }`}
+                    href={match.link}
+                    onClick={() => handleLinkButtonClick(index)}
+                  >
+                    예매
+                  </a>
                 </div>
               </div>
             ))}
