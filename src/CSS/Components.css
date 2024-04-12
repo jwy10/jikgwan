@@ -21,13 +21,41 @@
 }
 
 .matchBox {
+  /* align-items: center;/ */
   display: flex;
-  justify-content: space-evenly;
-  border-style: solid;
+  flex-direction: column;
+
+  margin: 15px;
+  border-color: #c0c0c0;
+  border-radius: 5px;
   border-width: 1px;
-  margin: 1px;
-  margin: 5px;
+  border-style: solid;
 }
+
+.matchDay {
+  background-color: #ebebeb;
+  font-size: 18px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.linkBtn {
+  background-color: white;
+  color: black;
+  border: solid;
+  border-width: 1px;
+  border-color: #c0c0c0;
+  margin-right: 25px;
+}
+
+.matchInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+/* 팀박스 CSS */
 
 .fieldBoxHeader {
   margin: 10px;

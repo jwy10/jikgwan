@@ -3,6 +3,7 @@ import '../CSS/Components.css';
 import TeamBox from './TeamBox';
 import DateSearch from './DateSearch';
 import axios from 'axios';
+import { convertEnglishToKorean } from './convertEnglishToKorean';
 
 interface Props {
   field: string;
@@ -13,6 +14,7 @@ interface Match {
   month: string;
   day: string;
   title: string;
+  time: string;
   link: string;
 }
 
@@ -38,7 +40,7 @@ export default function MainSection({ field, teamNames }: Props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('http://localhost:8000/matches', {
+        const response = await axios.post('http://localhost:8000/plData', {
           teamName: selectedTeam,
         });
         setMatches(response.data);
@@ -111,13 +113,52 @@ export default function MainSection({ field, teamNames }: Props) {
 
             {matches.map((match, index) => (
               <div className="matchBox" key={index}>
-                <p>
-                  {match.month} {match.day}
-                </p>
-                <p>{match.title}</p>
-                <p>
-                  <a href={match.link}>구매</a>
-                </p>
+                <div className="matchDay">
+                  <p style={{ margin: '10px 25px' }}>
+                    {convertEnglishToKorean(match.month)} {match.day}일
+                  </p>
+                </div>
+                <div className="matchInfo">
+                  <p style={{ marginLeft: '25px' }}>{match.time}</p>
+                  <p
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <p
+                      style={{
+                        color: 'red',
+                        marginRight: '5px',
+                        fontWeight: 'bold',
+                        fontSize: '12px',
+                      }}
+                    >
+                      H
+                    </p>
+                    {match.title.split(' v ')[0] && (
+                      <p style={{ marginRight: '10px' }}>
+                        {convertEnglishToKorean(
+                          match.title.split(' v ')[0].trim()
+                        )}
+                      </p>
+                    )}
+                    vs
+                    {match.title.split(' v ')[1] && (
+                      <p style={{ marginLeft: '10px' }}>
+                        {convertEnglishToKorean(
+                          match.title.split(' v ')[1].trim()
+                        )}
+                      </p>
+                    )}
+                  </p>
+                  <button className="linkBtn">
+                    <a href={match.link} style={{ margin: '10px 5px' }}>
+                      구매
+                    </a>
+                  </button>
+                </div>
               </div>
             ))}
           </>

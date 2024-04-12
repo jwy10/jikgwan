@@ -1,5 +1,6 @@
 import React from 'react';
 import IntroHeader from '../components/IntroHeader';
+import { Link } from 'react-router-dom';
 
 export default function Intro() {
   const imgDome = '/domestic.png';
@@ -8,9 +9,11 @@ export default function Intro() {
   return (
     <>
       <div>
-        <p style={{ fontSize: '40px', margin: '40px', textAlign: 'center' }}>
-          JikGwan
-        </p>
+        <Link to={'/home'}>
+          <p style={{ fontSize: '40px', margin: '40px', textAlign: 'center' }}>
+            JikGwan
+          </p>
+        </Link>
       </div>
       <div className="Intro">
         <IntroHeader
