@@ -1,3 +1,5 @@
+// MainSection 컴포넌트
+
 import React, { useState, useEffect } from 'react';
 import '../CSS/Components.css';
 import TeamBox from './TeamBox';
@@ -8,6 +10,7 @@ import { convertEnglishToKorean } from './convertEnglishToKorean';
 interface Props {
   field: string;
   teamNames: { appearData: string; sendData: string }[];
+  fieldColor: string;
 }
 
 interface Match {
@@ -18,11 +21,10 @@ interface Match {
   link: string;
 }
 
-export default function MainSection({ field, teamNames }: Props) {
+export default function MainSection({ field, teamNames, fieldColor }: Props) {
   const [showMatchBox, setShowMatchBox] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(true);
-  const [selectedTeam, setSelectedTeam] = useState<string>('');
-  const [selectedTeamIndex, setSelectedTeamIndex] = useState<number>(-1); // Add state to keep track of selected team index
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState<number>(0); // 초기 선택된 팀의 인덱스를 0으로 설정
 
   const toggleMatchBox = () => {
     setShowMatchBox(!showMatchBox);
@@ -30,9 +32,7 @@ export default function MainSection({ field, teamNames }: Props) {
   };
 
   const toggleSelection = (teamName: string, index: number) => {
-    // Modify toggleSelection to receive the index
-    setSelectedTeam(teamName);
-    setSelectedTeamIndex(index); // Update selected team index
+    setSelectedTeamIndex(index); // 팀을 선택할 때마다 선택된 팀의 인덱스 업데이트
   };
 
   const [matches, setMatches] = useState<Match[]>([]);
@@ -41,7 +41,7 @@ export default function MainSection({ field, teamNames }: Props) {
     const fetchData = async () => {
       try {
         const response = await axios.post('http://localhost:8000/plData', {
-          teamName: selectedTeam,
+          teamName: teamNames[selectedTeamIndex].sendData, // 선택된 팀의 sendData 사용
         });
         setMatches(response.data);
       } catch (error) {
@@ -49,10 +49,8 @@ export default function MainSection({ field, teamNames }: Props) {
       }
     };
 
-    if (selectedTeam) {
-      fetchData();
-    }
-  }, [selectedTeam]);
+    fetchData(); // 컴포넌트가 마운트될 때 초기 데이터 가져오기
+  }, [selectedTeamIndex, teamNames]);
 
   const [clickedMatchIndex, setClickedMatchIndex] = useState<number>(-1);
 
@@ -62,9 +60,19 @@ export default function MainSection({ field, teamNames }: Props) {
 
   return (
     <>
-      <div className="fieldBox">
+      <div
+        style={{
+          margin: '20px 16%',
+          border: 'solid 1px',
+          borderRadius: '10px',
+          backgroundColor: fieldColor,
+        }}
+      >
         <div className="fieldBoxHeader">
-          <h2 style={{ margin: '5px', fontSize: '28px' }}> {field} </h2>
+          <h2 style={{ margin: '5px', fontSize: '28px', color: 'white' }}>
+            {' '}
+            {field}{' '}
+          </h2>
           <button onClick={toggleMatchBox} className="toggleBtn">
             {showMatchBox ? '▲' : '▼'}
           </button>
@@ -111,15 +119,23 @@ export default function MainSection({ field, teamNames }: Props) {
                 <TeamBox
                   key={index}
                   teamName={team.appearData}
-                  isSelected={selectedTeamIndex === index} // Check if the index matches selectedTeamIndex
-                  onClick={() => toggleSelection(team.sendData, index)} // Pass the index to toggleSelection
+                  isSelected={selectedTeamIndex === index}
+                  onClick={() => toggleSelection(team.sendData, index)}
+                  fieldColor={fieldColor}
                 />
               ))}
             </div>
 
             {matches.map((match, index) => (
               <div className="matchBox" key={index}>
-                <div className="matchDay">
+                <div
+                  style={{
+                    backgroundColor: fieldColor,
+                    fontSize: '16px',
+                    borderRadius: '5px 5px 0px 0px',
+                    color: 'white',
+                  }}
+                >
                   <p style={{ margin: '10px 25px' }}>
                     {convertEnglishToKorean(match.month)} {match.day}일
                   </p>

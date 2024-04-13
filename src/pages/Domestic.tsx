@@ -20,7 +20,7 @@ export default function Domestic() {
   return (
     <div>
       <Header domColor="#000000" overColor="#b1b1b1" />
-      <MainSection field="K리그1" teamNames={kleague} />
+      <MainSection field="K리그1" teamNames={kleague} fieldColor="#DD444E" />
     </div>
   );
 }

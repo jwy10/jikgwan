@@ -3,6 +3,13 @@ import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 
 export default function Overseas() {
+  const korean = [
+    { appearData: '토트넘', sendData: 'Tottenham' },
+    { appearData: '바이에른 뮌헨', sendData: 'Bayern Munich' },
+    { appearData: '파리 생제르망', sendData: 'Paris Saint-Germain' },
+    { appearData: '울버햄튼', sendData: 'Wolverhampton' },
+    { appearData: '브렌트퍼드', sendData: 'Brentford' },
+  ];
   const pl = [
     { appearData: '토트넘', sendData: 'Tottenham' },
     { appearData: '맨유', sendData: 'Manchester United' },
@@ -29,7 +36,8 @@ export default function Overseas() {
   return (
     <div>
       <Header domColor="#b1b1b1" overColor="#000000" />
-      <MainSection field="프리미어리그" teamNames={pl} />
+      <MainSection field="코리안리거" teamNames={korean} fieldColor="#ff1e00" />
+      <MainSection field="프리미어리그" teamNames={pl} fieldColor="#001957" />
     </div>
   );
 }

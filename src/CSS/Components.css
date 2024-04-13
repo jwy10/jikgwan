@@ -24,23 +24,18 @@
   /* align-items: center;/ */
   display: flex;
   flex-direction: column;
-
   margin: 15px;
   border-color: #c0c0c0;
   border-radius: 5px;
   border-width: 1px;
   border-style: solid;
-}
-
-.matchDay {
-  background-color: #ebebeb;
-  font-size: 16px;
-  border-radius: 5px 5px 0px 0px;
+  background-color: white;
 }
 
 .linkBtn {
   display: flex;
   align-items: center;
+  justify-content: center;
   font-size: 14px;
   background-color: white;
   color: black;
@@ -54,7 +49,8 @@
 }
 
 .linkBtn.clicked {
-  background-color: rgb(0, 153, 255); /* 원하는 색상으로 변경하세요 */
+  background-color: rgb(0, 153, 255);
+  color: white;
 }
 
 .matchInfo {
@@ -76,7 +72,7 @@
 }
 
 .teamBox {
-  margin: 15px;
+  margin: 15px 20px;
   display: flex;
   flex: 0 0 100px;
   height: 100px;
@@ -89,13 +85,32 @@
 }
 
 .teamBox.selected {
-  background-color: #007bff; /* 선택된 팀의 배경색 */
   color: white; /* 선택된 팀의 글자색 */
 }
+
 .teamList {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
+  margin-bottom: 5px;
+  color: black;
+  background-color: white;
+}
+
+.teamList::-webkit-scrollbar {
+  width: thin;
+  height: 10px;
+}
+
+.teamList::-webkit-scrollbar-thumb {
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.teamList::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* border: 4px solid white; */
 }
 
 .matchSearch {
