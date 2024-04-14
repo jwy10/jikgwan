@@ -65,11 +65,19 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
           margin: '20px 16%',
           border: 'solid 1px',
           borderRadius: '10px',
-          backgroundColor: fieldColor,
+          // backgroundColor: fieldColor,
         }}
       >
-        <div className="fieldBoxHeader">
-          <h2 style={{ margin: '5px', fontSize: '28px', color: 'white' }}>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            backgroundColor: fieldColor,
+            borderRadius: '10px 10px 0px 0px',
+          }}
+        >
+          <h2 style={{ margin: '15px', fontSize: '24px', color: 'white' }}>
             {' '}
             {field}{' '}
           </h2>

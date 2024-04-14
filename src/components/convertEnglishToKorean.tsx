@@ -43,6 +43,14 @@ export function convertEnglishToKorean(english: string): string {
     Atalanta: '아탈란타',
     Lille: '릴',
     'Bayern Munich': '바이에른 뮌헨',
+    'FC Union Berlin': '우니온 베를린',
+    'Eintracht Frankfurt': '프랑크푸르트',
+    Stuttgart: '슈투트가르트',
+    'VfL Wolfsburg': '볼프스부르크',
+    '1899 Hoffenheim': '호펜하임',
+    'Olympique Lyon': '올림피크 리옹',
+    'Le Havre': '르아브르 AC',
+    'Toulouse FC': '툴루즈',
     'Bayer Leverkusen': '레버쿠젠',
     'Real Madrid': '레알 마드리드',
     'FC Barcelona': '바르셀로나',
@@ -55,6 +63,8 @@ export function convertEnglishToKorean(english: string): string {
     'AC Milan': 'AC 밀란',
     Fiorentina: '피오렌티나',
     'Viktoria Plzen': '빅토리아 플젠',
+    'Rangers FC': '레인저스 FC',
+    'Coupe de France Final 2024: Olympique Lyon': '올림피크 리옹',
   };
 
   return Map[english];

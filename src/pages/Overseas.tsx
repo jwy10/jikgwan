@@ -36,8 +36,8 @@ export default function Overseas() {
   return (
     <div>
       <Header domColor="#b1b1b1" overColor="#000000" />
-      <MainSection field="코리안리거" teamNames={korean} fieldColor="#ff1e00" />
       <MainSection field="프리미어리그" teamNames={pl} fieldColor="#001957" />
+      <MainSection field="코리안리거" teamNames={korean} fieldColor="#ff1e00" />
     </div>
   );
 }
