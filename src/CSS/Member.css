@@ -256,3 +256,9 @@ button {
   height: 45px;
   border: none;
 }
+
+@media screen and (max-width: 959) {
+  .headerInfo {
+    display: none;
+  }
+}

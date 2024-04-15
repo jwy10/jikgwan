@@ -159,6 +159,39 @@
   background-color: gray;
 }
 
+.teamInput {
+  display: flex;
+  font-size: 18px;
+  height: 30px;
+  justify-content: center;
+  text-align: start;
+  border-style: none;
+  margin-left: 3px;
+}
+
 input {
   outline: none;
+}
+
+.mobileMypage {
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 391px) {
+  .teamInput {
+    width: 156px;
+  }
+}
+
+@media screen and (max-width: 743px) {
+  .dateSearch {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .fieldBox {
+    margin: 20px 6%;
+  }
 }

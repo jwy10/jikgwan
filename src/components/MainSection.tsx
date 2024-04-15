@@ -1,5 +1,3 @@
-// MainSection 컴포넌트
-
 import React, { useState, useEffect } from 'react';
 import '../CSS/Components.css';
 import TeamBox from './TeamBox';
@@ -24,7 +22,25 @@ interface Match {
 export default function MainSection({ field, teamNames, fieldColor }: Props) {
   const [showMatchBox, setShowMatchBox] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(true);
-  const [selectedTeamIndex, setSelectedTeamIndex] = useState<number>(0); // 초기 선택된 팀의 인덱스를 0으로 설정
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState<number>(0);
+  const [matches, setMatches] = useState<Match[]>([]);
+  const [clickedMatchIndex, setClickedMatchIndex] = useState<number>(-1);
+  const [placeholder, setPlaceholder] =
+    useState<string>('원하는 팀을 입력해주세요.');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 391) {
+        setPlaceholder('팀 검색');
+      } else {
+        setPlaceholder('원하는 팀을 입력해주세요.');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleMatchBox = () => {
     setShowMatchBox(!showMatchBox);
@@ -32,27 +48,23 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
   };
 
   const toggleSelection = (teamName: string, index: number) => {
-    setSelectedTeamIndex(index); // 팀을 선택할 때마다 선택된 팀의 인덱스 업데이트
+    setSelectedTeamIndex(index);
   };
 
-  const [matches, setMatches] = useState<Match[]>([]);
+  const fetchData = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/plData', {
+        teamName: teamNames[selectedTeamIndex].sendData,
+      });
+      setMatches(response.data);
+    } catch (error) {
+      console.error('데이터를 불러오는 중 에러 발생:', error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.post('http://localhost:8000/plData', {
-          teamName: teamNames[selectedTeamIndex].sendData, // 선택된 팀의 sendData 사용
-        });
-        setMatches(response.data);
-      } catch (error) {
-        console.error('데이터를 불러오는 중 에러 발생:', error);
-      }
-    };
-
-    fetchData(); // 컴포넌트가 마운트될 때 초기 데이터 가져오기
+    fetchData();
   }, [selectedTeamIndex, teamNames]);
-
-  const [clickedMatchIndex, setClickedMatchIndex] = useState<number>(-1);
 
   const handleLinkButtonClick = (index: number) => {
     setClickedMatchIndex(index === clickedMatchIndex ? -1 : index);
@@ -60,14 +72,7 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
 
   return (
     <>
-      <div
-        style={{
-          margin: '20px 16%',
-          border: 'solid 1px',
-          borderRadius: '10px',
-          // backgroundColor: fieldColor,
-        }}
-      >
+      <div className="fieldBox">
         <div
           style={{
             display: 'flex',
@@ -98,15 +103,8 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
               </div>
               <input
                 type="text"
-                placeholder="원하는 팀을 입력해주세요."
-                style={{
-                  fontSize: '18px',
-                  height: '30px',
-                  justifyContent: 'center',
-                  textAlign: 'start',
-                  borderStyle: 'none',
-                  marginLeft: '3px',
-                }}
+                placeholder={placeholder}
+                className="teamInput"
               />
             </div>
             <DateSearch />
