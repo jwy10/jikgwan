@@ -27,6 +27,33 @@
   background-color: white;
 }
 
+.mobileMatchTime {
+  display: none;
+}
+
+.matchTime {
+  margin-left: 18px;
+  display: flex;
+}
+
+.homeBtn {
+  color: red;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.matchTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.homeTeam {
+  display: flex;
+  flex-direction: row;
+}
+
 .linkBtn {
   display: flex;
   align-items: center;
@@ -187,6 +214,37 @@ input {
 @media screen and (max-width: 743px) {
   .dateSearch {
     display: none;
+  }
+
+  .mobileMatchTime {
+    display: flex;
+    margin: 10px;
+  }
+
+  .matchDay {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .matchTime {
+    display: none;
+  }
+  .linkBtn {
+    margin-right: 0px;
+  }
+
+  .matchTitle {
+    flex-direction: column;
+  }
+
+  .matchInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .linkBtn {
+    position: relative;
   }
 }
 

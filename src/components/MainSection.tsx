@@ -137,42 +137,47 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
                 <div
                   style={{
                     backgroundColor: fieldColor,
-                    fontSize: '16px',
+                    fontSize: '18px',
                     borderRadius: '5px 5px 0px 0px',
                     color: 'white',
                   }}
                 >
-                  <p style={{ margin: '10px 25px' }}>
-                    {convertEnglishToKorean(match.month)} {match.day}일
-                  </p>
-                </div>
-                <div className="matchInfo">
-                  <p style={{ marginLeft: '18px' }}>{match.time}</p>
-                  <p
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                    }}
-                  >
+                  <div className="matchDay">
                     <p
                       style={{
-                        color: 'red',
-                        marginRight: '5px',
-                        fontWeight: 'bold',
-                        fontSize: '12px',
+                        margin: '10px 10px 10px 25px',
+                        fontSize: '18px',
                       }}
                     >
-                      H
+                      {convertEnglishToKorean(match.month)} {match.day}일
                     </p>
-                    {match.title.split(' v ')[0] && (
-                      <p style={{ marginRight: '10px', fontSize: '16px' }}>
-                        {convertEnglishToKorean(
-                          match.title.split(' v ')[0].trim()
-                        )}
+                    <p className="mobileMatchTime">{match.time}</p>
+                  </div>
+                </div>
+                <div className="matchInfo">
+                  <p className="matchTime">{match.time}</p>
+                  <p className="matchTitle">
+                    <div className="homeTeam">
+                      <p
+                        style={{
+                          color: 'red',
+                          marginRight: '5px',
+                          fontWeight: 'bold',
+                          fontSize: '12px',
+                        }}
+                      >
+                        H
                       </p>
-                    )}
-                    vs
+                      {match.title.split(' v ')[0] && (
+                        <p style={{ marginRight: '10px', fontSize: '16px' }}>
+                          {convertEnglishToKorean(
+                            match.title.split(' v ')[0].trim()
+                          )}
+                        </p>
+                      )}
+                    </div>
+                    <p>vs</p>
+
                     {match.title.split(' v ')[1] && (
                       <p style={{ marginLeft: '10px', fontSize: '16px' }}>
                         {convertEnglishToKorean(
