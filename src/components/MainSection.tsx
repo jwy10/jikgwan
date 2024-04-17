@@ -53,7 +53,7 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/plData', {
+      const response = await axios.post('http://3.37.161.15:8000/plData', {
         teamName: teamNames[selectedTeamIndex].sendData,
       });
       setMatches(response.data);
@@ -179,7 +179,7 @@ export default function MainSection({ field, teamNames, fieldColor }: Props) {
                     <p>vs</p>
 
                     {match.title.split(' v ')[1] && (
-                      <p style={{ marginLeft: '10px', fontSize: '16px' }}>
+                      <p className="awayTeam">
                         {convertEnglishToKorean(
                           match.title.split(' v ')[1].trim()
                         )}

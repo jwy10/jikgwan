@@ -72,6 +72,12 @@ export default function Header({ domColor, overColor }: Props) {
               border-radius : 25%;
             }
           }
+          @media only screen and (max-width: 391px) {
+            .mobileMypage {
+              margin-top : 45px
+            }
+          }
+
         `}
       </style>
     </>

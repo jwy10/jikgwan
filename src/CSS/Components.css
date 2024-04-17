@@ -200,9 +200,9 @@ input {
   outline: none;
 }
 
-.mobileMypage {
-  display: flex;
-  flex-direction: row;
+.awayTeam {
+  margin-left: 10px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 391px) {
@@ -211,7 +211,7 @@ input {
   }
 }
 
-@media screen and (max-width: 743px) {
+@media screen and (max-width: 768px) {
   .dateSearch {
     display: none;
   }
@@ -245,6 +245,24 @@ input {
 
   .linkBtn {
     position: relative;
+  }
+
+  .matchInfo {
+    position: relative;
+    justify-content: none;
+  }
+  .matchTitle {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .linkBtn {
+    position: absolute;
+    right: 0px;
+  }
+
+  .awayTeam {
+    margin-left: 0px;
   }
 }
 

@@ -109,9 +109,9 @@ export default function SignUp(): JSX.Element {
               </div>
             </div>
 
-            <div className="loginEmail">
+            <div className="signUpEmail">
               <input
-                className="loginInput"
+                className="signUpInput"
                 type="email"
                 placeholder="이메일"
                 value={email}
@@ -122,9 +122,9 @@ export default function SignUp(): JSX.Element {
                 <p style={{ fontSize: '20px' }}>x</p>
               </button>
             </div>
-            <div className="loginPassword">
+            <div className="signUpPassword">
               <input
-                className="loginInput"
+                className="signUpInput"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="비밀번호"
                 value={password}

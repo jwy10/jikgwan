@@ -39,6 +39,7 @@
   display: flex;
   flex-direction: column;
   margin: 5px 60px;
+  align-items: center;
 }
 
 .noneSignUp {
@@ -126,6 +127,31 @@ button {
   margin: 5px 60px;
 }
 
+.signUpEmail {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.signUpPassword {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.signUpInput {
+  margin: 0px 5px;
+  width: 260px;
+  height: 45px;
+  border: none;
+}
+
 .nameSec {
   display: flex;
   flex-direction: row;
@@ -137,8 +163,7 @@ button {
   width: 120px;
   border-style: solid;
   border-width: 1px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  margin: 5px;
   border-radius: 5px;
 }
 
@@ -162,7 +187,7 @@ button {
   width: 172px;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 10px;
+  margin: 5px;
   border-radius: 5px;
 }
 
@@ -178,7 +203,7 @@ button {
   flex-direction: row;
   border-style: solid;
   border-width: 1px;
-  margin-bottom: 10px;
+  margin: 5px;
   border-radius: 5px;
 }
 
@@ -217,6 +242,7 @@ button {
 .pwNotice {
   display: flex;
   flex-direction: column;
+  width: 235px;
 }
 
 .sendEmailBtn {
@@ -241,6 +267,10 @@ button {
   flex-direction: column;
   margin: 0px 60px 20px 60px;
 }
+.findTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
 
 .findEmail {
   display: flex;
@@ -255,6 +285,118 @@ button {
   width: 250px;
   height: 45px;
   border: none;
+}
+
+@media screen and (max-width: 768px) {
+  /* 로그인 */
+  .loginInfo {
+    margin: 5px 5vw;
+  }
+
+  .loginEmail {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-width: 1px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 240px;
+  }
+
+  .loginPassword {
+    margin: 5px;
+    width: 240px;
+  }
+
+  .loginInput {
+    margin: 0px 5px;
+    width: 260px;
+    height: 45px;
+    border: none;
+  }
+
+  .emailBtn,
+  .numBtn {
+    margin-right: 7px;
+  }
+
+  .passwordBtn {
+    background-color: white;
+    border: none;
+    margin-right: 5px;
+  }
+
+  button {
+    padding: 0px;
+  }
+
+  .rememberId {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 5px 30px 5px;
+    justify-content: space-between;
+    width: 240px;
+  }
+
+  .loginBtn {
+    width: 240px;
+  }
+
+  /* 회원가입 */
+
+  .signUpInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 5px 5vw;
+  }
+
+  .signUpEmail,
+  .signUpPassword,
+  .signUpNumber {
+    width: 240px;
+  }
+
+  .firstName {
+    margin: 5px;
+    width: 85px;
+  }
+
+  .firstNameInput {
+    width: 45px;
+  }
+
+  .lastName {
+    width: 143px;
+    margin: 5px;
+  }
+
+  .lastNameInput {
+    width: 103px;
+  }
+
+  .signUpBtn {
+    width: 242px;
+  }
+
+  /* 비번찾기 */
+  .findTitle {
+    font-size: 20px;
+  }
+
+  .findEmail {
+    width: 240px;
+  }
+
+  .sendEmailBtn {
+    width: 240px;
+    margin-bottom: 0px;
+  }
+
+  .findInfo {
+    align-items: center;
+    margin: 20px;
+  }
 }
 
 @media screen and (max-width: 959) {
