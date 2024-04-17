@@ -1,0 +1,406 @@
+.App {
+  display: flex;
+  /* align-items: center; */
+}
+
+.Login {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginBox {
+  /* border-style: solid; */
+  border-radius: 10px;
+  border-width: 1px;
+  margin-top: 200px;
+  box-shadow: 0 0 32px 0 rgba(47, 52, 59, 0.25);
+}
+
+.signupBox {
+  /* border-style: solid; */
+  border-radius: 10px;
+  border-width: 1px;
+  margin-top: 150px;
+  box-shadow: 0 0 32px 0 rgba(47, 52, 59, 0.25);
+}
+
+.findPasswordBox {
+  border-radius: 10px;
+  border-width: 1px;
+  margin-top: 250px;
+  box-shadow: 0 0 32px 0 rgba(47, 52, 59, 0.25);
+}
+
+/* 로그인 */
+
+.loginInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 60px;
+  align-items: center;
+}
+
+.noneSignUp {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.loginEmail {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.loginPassword {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.loginInput {
+  margin: 0px 5px;
+  width: 260px;
+  height: 45px;
+  border: none;
+}
+
+.emailBtn {
+  background-color: white;
+  border: none;
+  width: 20px;
+}
+
+.passwordBtn {
+  background-color: white;
+  border: none;
+  margin-right: 5px;
+}
+
+button {
+  padding: 0px;
+}
+
+.rememberId {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  justify-content: space-between;
+}
+
+.loginBtn {
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-style: inherit;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  width: 300px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 132, 255);
+  margin-bottom: 50px;
+  transition: background-color 0.3s, color 0.3s; /* 트랜지션 효과 추가 */
+}
+
+.loginBtn:hover {
+  background-color: white;
+  color: rgb(0, 132, 255);
+}
+
+/* 회원가입 */
+
+.signUpInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 60px;
+}
+
+.signUpEmail {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.signUpPassword {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.signUpInput {
+  margin: 0px 5px;
+  width: 260px;
+  height: 45px;
+  border: none;
+}
+
+.nameSec {
+  display: flex;
+  flex-direction: row;
+}
+
+.firstName {
+  display: flex;
+  flex-direction: row;
+  width: 120px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.firstNameInput {
+  margin: 0px 5px;
+  width: 75px;
+  height: 45px;
+  border: none;
+}
+
+.fnameBtn {
+  background-color: white;
+  border: none;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.lastName {
+  display: flex;
+  flex-direction: row;
+  width: 172px;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.lastNameInput {
+  margin: 0px 5px;
+  width: 128px;
+  height: 45px;
+  border: none;
+}
+
+.signUpNumber {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.numberInput {
+  margin: 0px 5px;
+  width: 260px;
+  height: 45px;
+  border: none;
+}
+
+.numBtn {
+  background-color: white;
+  border: none;
+  width: 20px;
+}
+
+.signUpBtn {
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-style: inherit;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  width: 300px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 132, 255);
+  margin: 30px 0px 50px 0px;
+  transition: background-color 0.3s, color 0.3s; /* 트랜지션 효과 추가 */
+}
+
+/* 비밀번호 찾기 */
+
+.pwNotice {
+  display: flex;
+  flex-direction: column;
+  width: 235px;
+}
+
+.sendEmailBtn {
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-style: inherit;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  width: 300px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 132, 255);
+  margin-bottom: 20px;
+  transition: background-color 0.3s, color 0.3s; /* 트랜지션 효과 추가 */
+}
+
+.findInfo {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 60px 20px 60px;
+}
+.findTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.findEmail {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.findInput {
+  margin: 0px 5px;
+  width: 250px;
+  height: 45px;
+  border: none;
+}
+
+@media screen and (max-width: 768px) {
+  /* 로그인 */
+  .loginInfo {
+    margin: 5px 5vw;
+  }
+
+  .loginEmail {
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-width: 1px;
+    margin: 5px;
+    border-radius: 5px;
+    width: 240px;
+  }
+
+  .loginPassword {
+    margin: 5px;
+    width: 240px;
+  }
+
+  .loginInput {
+    margin: 0px 5px;
+    width: 260px;
+    height: 45px;
+    border: none;
+  }
+
+  .emailBtn,
+  .numBtn {
+    margin-right: 7px;
+  }
+
+  .passwordBtn {
+    background-color: white;
+    border: none;
+    margin-right: 5px;
+  }
+
+  button {
+    padding: 0px;
+  }
+
+  .rememberId {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 5px 30px 5px;
+    justify-content: space-between;
+    width: 240px;
+  }
+
+  .loginBtn {
+    width: 240px;
+  }
+
+  /* 회원가입 */
+
+  .signUpInfo {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 5px 5vw;
+  }
+
+  .signUpEmail,
+  .signUpPassword,
+  .signUpNumber {
+    width: 240px;
+  }
+
+  .firstName {
+    margin: 5px;
+    width: 85px;
+  }
+
+  .firstNameInput {
+    width: 45px;
+  }
+
+  .lastName {
+    width: 143px;
+    margin: 5px;
+  }
+
+  .lastNameInput {
+    width: 103px;
+  }
+
+  .signUpBtn {
+    width: 242px;
+  }
+
+  /* 비번찾기 */
+  .findTitle {
+    font-size: 20px;
+  }
+
+  .findEmail {
+    width: 240px;
+  }
+
+  .sendEmailBtn {
+    width: 240px;
+    margin-bottom: 0px;
+  }
+
+  .findInfo {
+    align-items: center;
+    margin: 20px;
+  }
+}
+
+@media screen and (max-width: 959) {
+  .headerInfo {
+    display: none;
+  }
+}

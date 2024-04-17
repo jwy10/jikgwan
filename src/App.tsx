@@ -9,6 +9,7 @@ import NotFounded from './pages/NotFounded';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
+import FindPassword from './pages/FindPassword';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/overseas" element={<Overseas />} />
           <Route path="/404" element={<NotFounded />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/findPassword" element={<FindPassword />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>
       </BrowserRouter>

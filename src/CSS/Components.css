@@ -2,25 +2,89 @@
   margin: 20px 16%;
   border-style: solid;
   border-width: 1px;
-}
-
-.fieldBoxHeader {
-  display: flex;
-  align-items: center;
+  border-radius: 10px;
 }
 
 .toggleBtn {
+  font-size: 16px;
+  width: 30px;
   height: 30px;
-  margin: 5px;
+  margin: 15px;
+  background-color: white;
+  border-radius: 5px;
+  border-width: 1px;
 }
 
 .matchBox {
+  /* align-items: center;/ */
   display: flex;
-  justify-content: space-evenly;
-  border-style: solid;
+  flex-direction: column;
+  margin: 15px;
+  border-color: #c0c0c0;
+  border-radius: 5px;
   border-width: 1px;
-  margin: 1px;
+  border-style: solid;
+  background-color: white;
 }
+
+.mobileMatchTime {
+  display: none;
+}
+
+.matchTime {
+  margin-left: 18px;
+  display: flex;
+}
+
+.homeBtn {
+  color: red;
+  margin-right: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.matchTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.homeTeam {
+  display: flex;
+  flex-direction: row;
+}
+
+.linkBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  background-color: white;
+  color: black;
+  border: solid;
+  border-width: 1px;
+  border-color: #c0c0c0;
+  border-radius: 5px;
+  margin-right: 18px;
+  height: 40px;
+  width: 40px;
+}
+
+.linkBtn.clicked {
+  background-color: rgb(0, 153, 255);
+  color: white;
+}
+
+.matchInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+/* 팀박스 CSS */
 
 .fieldBoxHeader {
   margin: 10px;
@@ -30,7 +94,7 @@
 }
 
 .teamBox {
-  margin: 15px;
+  margin: 15px 20px;
   display: flex;
   flex: 0 0 100px;
   height: 100px;
@@ -43,13 +107,32 @@
 }
 
 .teamBox.selected {
-  background-color: #007bff; /* 선택된 팀의 배경색 */
   color: white; /* 선택된 팀의 글자색 */
 }
+
 .teamList {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
+  margin-bottom: 5px;
+  color: black;
+  background-color: white;
+}
+
+.teamList::-webkit-scrollbar {
+  width: thin;
+  height: 10px;
+}
+
+.teamList::-webkit-scrollbar-thumb {
+  background-color: rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.teamList::-webkit-scrollbar-track {
+  background-color: #ffffff;
+  border-radius: 10px;
+  /* border: 4px solid white; */
 }
 
 .matchSearch {
@@ -103,6 +186,88 @@
   background-color: gray;
 }
 
+.teamInput {
+  display: flex;
+  font-size: 18px;
+  height: 30px;
+  justify-content: center;
+  text-align: start;
+  border-style: none;
+  margin-left: 3px;
+}
+
 input {
   outline: none;
+}
+
+.awayTeam {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 391px) {
+  .teamInput {
+    width: 156px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dateSearch {
+    display: none;
+  }
+
+  .mobileMatchTime {
+    display: flex;
+    margin: 10px;
+  }
+
+  .matchDay {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .matchTime {
+    display: none;
+  }
+  .linkBtn {
+    margin-right: 0px;
+  }
+
+  .matchTitle {
+    flex-direction: column;
+  }
+
+  .matchInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .linkBtn {
+    position: relative;
+  }
+
+  .matchInfo {
+    position: relative;
+    justify-content: none;
+  }
+  .matchTitle {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .linkBtn {
+    position: absolute;
+    right: 0px;
+  }
+
+  .awayTeam {
+    margin-left: 0px;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .fieldBox {
+    margin: 20px 6%;
+  }
 }

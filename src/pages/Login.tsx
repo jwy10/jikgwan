@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
-import '../CSS/Login.css';
 import { Link } from 'react-router-dom';
 
-export default function Login() {
-  const [showPassword, setShowPassword] = useState(false); // 비밀번호 가시성 상태 추가
+import '../CSS/Member.css';
 
-  // 비밀번호 보이기/숨기기 토글 함수
-  const togglePasswordVisibility = () => {
+export default function Login(): JSX.Element {
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [clicked, setClicked] = useState<boolean>(false);
+  const togglePasswordVisibility = (): void => {
     setShowPassword(!showPassword);
+  };
+
+  const hide: string = '/hide.png';
+  const show: string = '/show.png';
+
+  const handleEmailClear = (): void => {
+    setEmail('');
+  };
+
+  const handleClick = (): void => {
+    setClicked(true);
   };
 
   return (
@@ -31,31 +44,69 @@ export default function Login() {
               <input
                 className="loginInput"
                 type="email"
-                placeholder="email"
+                placeholder="이메일"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 style={{ marginLeft: '10px' }}
               />
-              <button className="emailBtn">x</button>
+              <button className="emailBtn" onClick={handleEmailClear}>
+                <p style={{ fontSize: '20px' }}>x</p>
+              </button>
             </div>
             <div className="loginPassword">
               <input
                 className="loginInput"
-                type={showPassword ? 'text' : 'password'} // 비밀번호 가시성에 따라 type 변경
-                placeholder="password"
+                type={showPassword ? 'text' : 'password'}
+                placeholder="비밀번호"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 style={{ marginLeft: '10px' }}
               />
               <button
                 className="passwordBtn"
                 onClick={togglePasswordVisibility}
               >
-                {showPassword ? 'Hide' : 'Show'} {/* 버튼 텍스트 변경 */}
+                <img
+                  src={showPassword ? hide : show}
+                  alt="password visibility"
+                  style={{ width: '20px', height: '20px' }}
+                />
               </button>
             </div>
-            <input
-              type="checkbox"
-              name="remember"
-              id=""
-              style={{ width: '30px', height: '30px' }}
-            />
+            <div className="rememberId">
+              <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <input
+                  type="checkbox"
+                  name="remember"
+                  id=""
+                  style={{ width: '20px', height: '20px', marginRight: '10px' }}
+                />
+                <p style={{ fontSize: '14px' }}>자동 로그인 저장</p>
+              </div>
+              <Link to={'/findPassword'}>
+                {' '}
+                <p
+                  style={{
+                    color: 'blue',
+                    fontSize: '14px',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  비밀번호 찾기
+                </p>
+              </Link>
+            </div>
+
+            <button
+              className="loginBtn"
+              onClick={handleClick}
+              style={{
+                backgroundColor: clicked ? 'gray' : 'rgb(0, 132, 255)',
+                color: 'white',
+              }}
+            >
+              로그인
+            </button>
           </div>
         </div>
       </div>

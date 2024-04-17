@@ -29,7 +29,7 @@ export default function IntroHeader({
     justify-content: center;
     margin: 10px;
     color: ${fontColor};
-    font-size: 28px;
+    font-size: 40px;
     font-weight: bold;
 
     &:hover {
